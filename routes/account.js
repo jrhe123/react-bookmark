@@ -152,4 +152,31 @@ router.post('/register', function(req, res, next) {
 
 
 
+
+// New API
+router.post('/validate', function(req, res, next) {
+
+  var token = req.body.token;
+  utils.JWT.verify(token, process.env.TOKEN_SECRET)
+  .then(function(decode){
+
+    return controllers.profile.findById(decode.id)
+  })
+  .then(function(profile){
+    res.json({
+      confirmation: 'success',
+      profile: profile
+    })
+  })
+  .catch(function(err){
+    res.json({
+      confirmation: 'fail',
+      message: 'Invalid token.'
+    })
+    return;
+  })
+
+});
+
+
 module.exports = router;
