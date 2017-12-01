@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+// Libraries
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 // Components
 import {Home} from './components/layout';
@@ -17,9 +20,9 @@ class App extends Component{
 
 		return(
 			<Provider store={store.configureStore()}>
-				<div className="container">
+				<MuiThemeProvider>
 					<Home />
-				</div>
+				</MuiThemeProvider>
 			</Provider>
 		)
 	}

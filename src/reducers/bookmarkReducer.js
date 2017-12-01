@@ -2,7 +2,9 @@ import constants from '../constants';
 
 var initialState = {
 
-	all: []
+	all: [],
+
+	sectionList: [],
 }
 
 export default (state = initialState, action) => {
@@ -36,6 +38,14 @@ export default (state = initialState, action) => {
 			updated[action.bookmark.profile] = list;
 			
 			return updated;	
+
+
+		case constants.DOC_CREATED:
+
+			console.log('reducer received, call back to component');
+
+			updated.sectionList.push(action.section);	
+			return updated;		
 
 
 		default:

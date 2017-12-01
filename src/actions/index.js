@@ -61,6 +61,20 @@ export default {
 			type: constants.BOOKMARK_CREATED,
 			bookmark: bookmark
 		}
+	},
+
+
+
+
+
+	// Google
+	docCreated: (section) => {
+
+		console.log('action called, now go to reducer');
+		return {
+			type: constants.DOC_CREATED,
+			section: section
+		}
 	}
 
 

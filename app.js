@@ -10,30 +10,10 @@ require('dotenv').config();
 
 
 
-
-// MongoDB
-var mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URL, function(err, res){
-
-	if(err){
-		console.log('DB connect failed ' + errr);
-	}else{
-		console.log('DB connected');
-	}
-})
-
-
-
-
 var index = require('./routes/index');
-var api = require('./routes/api');
-var scrape = require('./routes/scrape');
-var account = require('./routes/account');
-
-
-
 var app = express();
 app.use(cors());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,33 +25,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-
-// setup client session
-app.use(sessions({
-
-    cookieName: 'session',
-    secret: process.env.SESSION_SECRET,
-    duration: 24*60*60*1000,
-    activeDuration: 30*60*1000,
-}))
-
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 // Setup routes
 app.use('/', index);
-app.use('/api', api);
-app.use('/scrape', scrape);
-app.use('/account', account);
-
-
-
-
-
-
 
 
 // catch 404 and forward to error handler

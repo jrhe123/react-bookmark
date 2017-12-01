@@ -22,15 +22,25 @@
     "express": "~4.15.2",
     "hjs": "~0.0.6",
     "jsonwebtoken": "^7.4.2",
+    "material-ui": "^0.19.4",
     "mongoose": "^4.11.6",
     "morgan": "~1.8.1",
     "react": "^15.6.1",
+    "react-collapsible": "^2.0.3",
     "react-dom": "^15.6.1",
+    "react-dropzone": "^4.2.3",
+    "react-iframe": "^1.1.0",
     "react-redux": "^5.0.6",
+    "react-responsive-accordion": "^1.0.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "serve-favicon": "~2.4.2",
     "superagent": "^3.5.2",
+    "uuid": "^3.1.0",
     "webpack": "^3.5.2"
+  },
+  "devDependencies": {
+    "file-loader": "^1.1.5",
+    "image-webpack-loader": "^3.4.2"
   }
 }

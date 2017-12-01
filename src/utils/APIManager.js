@@ -10,14 +10,13 @@ export default{
 			.set('Accept', 'application/json')
 			.end((err, response) => {
 				if(err){
-					//const msg = err.message || err;
 					callback(err, null);
 					return;
 				}
 
-				const confirmation = response.body.confirmation;
-				if(confirmation != 'success'){
-					callback({message: response.body.message}, null);
+				const confirmation = response.body.Confirmation;
+				if(confirmation != 'Success'){
+					callback({Message: response.body.Message}, null);
 					return;
 				}
 
@@ -33,14 +32,34 @@ export default{
 			.set('Accept', 'application/json')
 			.end((err, response) => {
 				if(err){
-					//const msg = err.message || err;
 					callback(err, null);
 					return;
 				}
 
-				const confirmation = response.body.confirmation;
-				if(confirmation != 'success'){
-					callback({message: response.body.message}, null);
+				const confirmation = response.body.Confirmation;
+				if(confirmation != 'Success'){
+					callback({Message: response.body.Message}, null);
+					return;
+				}
+
+				callback(null, response.body);
+			})
+	},
+
+	upload: (endpoint, formData, callback) => {
+
+		superagent
+			.post(endpoint)
+			.send(formData)
+			.end((err, response) => {
+				if(err){
+					callback(err, null);
+					return;
+				}
+
+				const confirmation = response.body.Confirmation;
+				if(confirmation != 'Success'){
+					callback({Message: response.body.Message}, null);
 					return;
 				}
 
